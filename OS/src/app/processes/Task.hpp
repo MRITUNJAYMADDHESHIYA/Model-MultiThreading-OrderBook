@@ -45,16 +45,7 @@ struct Task{
             throw std::runtime_error("INvalid task data format");
         }
     }
-}
-
-
-
-
-
-
-
-
-
+};
 
 
 #endif

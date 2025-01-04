@@ -15,10 +15,4 @@ class IO{
         std::fstream file_stream;
 };
 
-
-
-
-
-
-
 #endif
