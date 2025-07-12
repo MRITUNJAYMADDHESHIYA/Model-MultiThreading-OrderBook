@@ -1,3 +1,7 @@
+//join()->wait for complete the program
+//detach() and joinable() in C++ multithreading
+
+
 #include<iostream>
 #include<chrono>
 #include<thread>
@@ -16,7 +20,7 @@ using namespace std;
 //     cout<<"main()"<<endl;
 
 //     t1.join();
-//     if(t1.joinable()){
+//     if(t1.joinable()){ // This will return false as t1 is already joined
 //         t1.join();
 //     }
 //     cout<<"main() after"<<endl;
@@ -24,7 +28,7 @@ using namespace std;
 // }
 
 
-//Detach 
+//Detach -> more faster than join, basically Lets the thread run independently
 void run(int count){
     while(count-- >0){
         cout<<count<<"TradingMrity"<<endl;

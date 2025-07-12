@@ -1,3 +1,17 @@
+//1.main() function is the only thread when no other threads are created.
+//2. Threads is also know as lightweight process. (like a process, but with less overhead and try to parallelization of tasks)
+
+//eg:-browser multiple tabs, each tab is a thread.
+//  :-spell checking in text editor, each word is a thread.
+//  :-vs code, auto completing the code to give me different options
+
+
+
+
+
+
+
+//Find the sum of all odd number from 1 to 1,900,000,000 and even number from 1 to 1,900,000,000 using multithreading.
 #include<iostream>
 #include<thread>
 #include<chrono>
@@ -46,5 +60,4 @@ int main(){
 
     cout<<"Sec:" <<duration.count()/1000000<<endl;
     return 0;
-
 }

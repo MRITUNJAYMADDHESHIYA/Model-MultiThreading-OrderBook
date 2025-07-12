@@ -3,7 +3,7 @@
 #include<mutex>
 using namespace std;
 
-//Mutex: Mutual Exclusion
+//Mutex: Mutual Exclusion  
 //mutex is used to avoid the race condition
 //we use lock(), unlock() on mutex to avoid  race condition
 
