@@ -8,14 +8,14 @@ using namespace std;
 std::mutex m1;
 int buffer = 0;
 
-// void task(const char* threadNumber, int loopFor){
-//     m1.lock();
-//     for(int i=0; i<loopFor; i++){
-//         buffer++;
-//         cout<<threadNumber<<buffer<<endl;
-//     }
-//     m1.unlock();
-// }
+void task(const char* threadNumber, int loopFor){
+    m1.lock();
+    for(int i=0; i<loopFor; i++){
+        buffer++;
+        cout<<threadNumber<<buffer<<endl;
+    }
+    m1.unlock();
+}
 
 //both are same
 void task(const char* threadNumber, int loopFor){

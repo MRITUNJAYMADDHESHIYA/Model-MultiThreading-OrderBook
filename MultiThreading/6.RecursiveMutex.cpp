@@ -1,4 +1,9 @@
 //same thread lock same mutex-lock again but it's not possible so, recursive Mutex introduce
+//recursive mutex count how many time lock for unlock also
+//
+
+
+
 
 #include<iostream>
 #include<thread>
@@ -15,12 +20,12 @@ void recursion(char c, int loopFor){
     cout<<c<<" "<<buffer++<<endl;
     recursion(c, --loopFor);
     m1.unlock();
-    cout<<"unlock by thread"<<c<<endl;
+    cout<<"unlock by thread "<<c<<endl;
 }
 
 int main(){
-    thread t1(recursion, '0', 10);
-    thread t2(recursion, '1', 10);
+    thread t1(recursion, '1', 10);
+    thread t2(recursion, '2', 10);
 
     t1.join();
     t2.join();
