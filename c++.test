@@ -10,4 +10,47 @@
 8.Boost, Async library, future &promice, launch policies for concurrent programming
 
 
-//Start Multithreading and concept this all week
+
+
+/////HFT strategy:-
+Low- Latency network + Powerful Hardware + Mathematical Model + Exchange data centre
+Strategy:-
+1.Market Making:-        Medium Speed       profit(bid-ask spread) - provide liquidity
+2.Arbitrage:-            Ultra-fast         profit(one stock on different exchange)(eg..cash-future arbitrage, spatial arbitrage, triangular arbitrage in forex)
+3.Latency Arbitrage:-    ultra-fast         profit(price delay on one exchange to other exchange)
+4.Statistical Arbitrage:-fast               Pair trading(Two stocks but correlated assets, buy one and sell other)
+5.Order Anticipation:-   ultra-fast         Big Institutional orders(placed in smaller chunks + Manipulation) Order flow + footprint chart + volume on price + heatmaps(level II)
+
+6.Iceberg:-              Real time          Traders can identify these hidden orders by observing repeated, large-volume executions at the same price, suggesting an iceberg order is absorbing trades. Analyzing trade execution patterns, volume profiles, and order book behavior can reveal the presence of these hidden orders. 
+7.Quote stuffing:-       ultra-fast         Quote stuffing is the practice where a large number of orders to buy or sell securities are placed and then canceled almost immediately
+8.Order Book Imbalance:- Real-time          
+
+
+
+/////Infrastructure
+1.Ultra-low latency Infrastructure:- c++ OR RUST /near exchange / dedicated VPS /
+2.Ultra-smooth:- CPU:        AMD threadripper pro 7975wx(32 cores, 64 thread)
+                 RAM:        256GB, DDR5 ECC(server ram)
+                 storage:    4TB NVMe Gen4(for datasets), 2TB SSD(os + backups)
+                 GPU:        NVIDIA RTX 4090(for visual backtests)
+                 Networking: 1Gps minimum, dualNIC setuo
+                 Cooling:    Custom liquid colling(silent & efficient)
+                cost:- 10lakh
+
+3.Real-Time server:- CPU:       Intel Xeon Gold 6426Y (24 cores @3.5 GHz base)
+                     RAM:       512GB DDR5 ECC
+                     Storage:   4TB NVMe RAID 0 (ultra fast data access)
+                     Network:   Dual 10Gbps Mellanox NICs + FPGA support(solarflare or Napatech)
+                     Extras:    Hardware timestamping, Realtime Linux kernal, BIOS-tuned latency setting
+                     OS:        Ubuntu Server tuned for low-latency
+                    cost:- 25-40 lakh
+
+4.Scalping(ultra-fast):- CPU:     Intel Xeon Platinum 8460Y(48 cores)
+                         RAM:     1TB ddr5 ECC
+                         GPU:     Dual NVIDIA h100
+                         Storage: 8TB NVMe RAID + 10TB SAS (archival + model storage)
+                         Network: 10Gbps fiber +FPGA integrated NICs
+                         Cooling: Fully liquid-cooled rack unit
+                        cast:- 70-1.2 CR
+
+                        
