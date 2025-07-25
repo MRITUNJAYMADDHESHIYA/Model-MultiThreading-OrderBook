@@ -81,7 +81,7 @@ class OrderBook{
     private:
         std::vector<Order> bids;
         std::vector<Order> asks;
-        std::unordered_map<std::string, User> users;
+        std::unordered_map<std::string, User> users; //This is complex for me
         void flipBalance(const std::string& userId1, const std::string& userId2, double quantity, double price);
 
     public:

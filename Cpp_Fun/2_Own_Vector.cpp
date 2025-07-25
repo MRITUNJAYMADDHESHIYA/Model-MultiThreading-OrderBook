@@ -1,3 +1,7 @@
+//I have implemented a simple vector class in c++ that mimics the bahavior of str::vector
+
+
+
 #include<iostream>
 #include<stdexcept> //for std::out_of_range
 #include<cstddef> //for size_t
