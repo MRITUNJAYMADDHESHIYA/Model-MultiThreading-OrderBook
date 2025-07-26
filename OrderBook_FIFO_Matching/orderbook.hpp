@@ -63,10 +63,10 @@ struct Order{
     int insert_order_ask;
 
     Order(std::string Username, std::string Side, int Price, int Quantity){
-        user_name = Username,
-        side      = Side,
-        price     = Price,
-        quantity  = Quantity,
+        user_name = Username;
+        side      = Side;
+        price     = Price;
+        quantity  = Quantity;
         if(side == "bid"){
             insert_order_bid = order_count_bid++;
         }else{
@@ -97,4 +97,5 @@ class OrderBook{
         void cancelBid(std::string Username, int Price, int Quantity); // cancels a bid or ask from the order book
         void cancelAsk(std::string Username, int Price, int Quantity);
 };
-#endif ORDERBOOK_HPP
+
+#endif 
