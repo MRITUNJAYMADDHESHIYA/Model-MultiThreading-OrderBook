@@ -95,3 +95,32 @@ Top 10 open source Quant Libraries and Packages
 - Useful for basic financial computations and data analysis.
 10. PyPortfolioOpt:
 - Implements portfolio optimization methods, including classical mean-variance optimization techniques and Black-Litterman allocation.
+
+
+
+################################################# Projects #############################################################
+1.Market data parser & L1 recorder (easy)
+Ingest a raw market feed (simulated), parse messages, store to binary log (per-message timestamp).
+Goals: robust parsing, minimal allocations, high-throughput writing.
+
+2.Single-threaded limit order book / matching engine (easy → medium)
+Implements limit orders, cancels, fills; returns trades. Core of many HFT stacks.
+
+3.Multithreaded market data handler + lock-free dispatch (medium)
+SPSC ring buffers, producer (network io) -> consumer (book updater). Low allocations.
+
+4.Simple strategy + backtester (event-driven) (medium)
+Implement strategies (market making, mid-price mean-reversion), backtest on recorded L1/L2 logs.
+
+5.Limit order entry gateway with FIX/UDP (simulated) (medium → advanced)
+Send/receive orders via FIX or a simplified UDP protocol; implement order state machine and retransmit logic.
+
+6.Market-making strategy in live-sim (paper) (advanced)
+Realistic sim with latency injection, queue position modeling, exchange simulator.
+
+7.Exchange simulator + matching engine with L2 book & order priority (advanced)
+Support iceberg, IOC, FOK, partial fills, order routing, and multiple instruments.
+
+8.Co-location/low-latency experiments (measurement only) (advanced / lab)
+Measure RTTs, kernel bypass (DPDK), NIC tuning. (Hardware and host privileges required.)
+

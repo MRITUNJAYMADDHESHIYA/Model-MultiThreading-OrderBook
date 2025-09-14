@@ -1,0 +1,5 @@
+SPSC:-
+only one thread adding items to the queue and one thread removing them, allowing for significant performance optimizations due to the lack of contention for the single producer and consumer. 
+
+
+atomic variable:- no more than one thread allow in any variable
