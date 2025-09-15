@@ -18,10 +18,10 @@ class SPSCQueue{
             size_t t = tail.load(std::memory_order_relaxed);
             size_t h = head.load(std::memory_order_acquire);
 
-            if ((t + 1) % Capacity == h){
+            if ((t + 1) % capacity == h){
                 return false; // full
             }
-            buffer[t % Capacity] = item;
+            buffer[t % capacity] = item;
             tail.store(t + 1, std::memory_order_release);
             return true;
         }
@@ -31,7 +31,7 @@ class SPSCQueue{
             size_t t = tail.load(std::memory_order_acquire);
 
             if (h == t){
-                return std::nullopt; // empty
+                return false; // empty
             }
             out = buffer[h];
             head.store((h + 1)% capacity, std::memory_order_release);
