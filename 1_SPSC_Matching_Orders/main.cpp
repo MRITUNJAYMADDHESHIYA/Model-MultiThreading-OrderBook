@@ -60,67 +60,68 @@ class OrderBook{
     std::map<Price, PriceLevel, std::greater<Price>> bids; //descending for bids
     std::map<Price, PriceLevel, std::less<Price>>    asks; //ascending for asks
 
-    //adding limit order and try to match
-    std::vector<std::tuple<uint64_t, uint64_t, Price, uint64_t>> addOrder(Order Basket){
-        std::vector<std::tuple<uint64_t, uint64_t, Price, uint64_t>> trades; //maker_id, taker_id, price, qty
+    public:
+        //adding limit order and try to match
+        std::vector<std::tuple<uint64_t, uint64_t, Price, uint64_t>> addOrder(Order Basket){
+            std::vector<std::tuple<uint64_t, uint64_t, Price, uint64_t>> trades; //maker_id, taker_id, price, qty
 
-        if(Basket.isBuy){
-            while(Basket.quantity && !asks.empty()){
-                auto it = asks.begin();
-                if(it->first > Basket.price) break; //no match
+            if(Basket.isBuy){
+                while(Basket.quantity && !asks.empty()){
+                    auto it = asks.begin();
+                    if(it->first > Basket.price) break; //no match
 
-                auto &pl = it->second;
-                while(Basket.quantity && !pl.orders.empty()){
-                    Order maker   = pl.orders.front();
-                    uint64_t fill = std::min(maker.quantity, Basket.quantity);
-                    trades.emplace_back(maker.id, Basket.id, maker.price, fill);
-                    Basket.quantity -= fill;
-                    maker.quantity -= fill;
+                    auto &pl = it->second;
+                    while(Basket.quantity && !pl.orders.empty()){
+                        Order maker   = pl.orders.front();
+                        uint64_t fill = std::min(maker.quantity, Basket.quantity);
+                        trades.emplace_back(maker.id, Basket.id, maker.price, fill);
+                        Basket.quantity -= fill;
+                        maker.quantity -= fill;
 
-                    if(maker.quantity == 0){
-                        pl.orders.pop_front();
-                    } else {
-                        pl.orders.front().quantity = maker.quantity;
+                        if(maker.quantity == 0){
+                            pl.orders.pop_front();
+                        } else {
+                            pl.orders.front().quantity = maker.quantity;
+                        }
+                    }
+                    if(pl.orders.empty()){
+                        asks.erase(it);
                     }
                 }
-                if(pl.orders.empty()){
-                    asks.erase(it);
+                if(Basket.quantity > 0){
+                    bids[Basket.price].price = Basket.price;
+                    bids[Basket.price].orders.push_back(Basket);
                 }
-            }
-            if(Basket.quantity > 0){
-                bids[Basket.price].price = Basket.price;
-                bids[Basket.price].orders.push_back(Basket);
-            }
-        }else{
-            while(Basket.quantity && !bids.empty()){
-                auto it = bids.begin();
-                if(it->first < Basket.price) break; //no match
+            }else{
+                while(Basket.quantity && !bids.empty()){
+                    auto it = bids.begin();
+                    if(it->first < Basket.price) break; //no match
 
-                auto &pl = it->second;
-                while(Basket.quantity && !pl.orders.empty()){
-                    Order maker   = pl.orders.front();
-                    uint64_t fill = std::min(maker.quantity, Basket.quantity);
-                    trades.emplace_back(maker.id, Basket.id, maker.price, fill);
-                    Basket.quantity -= fill;
-                    maker.quantity -= fill;
+                    auto &pl = it->second;
+                    while(Basket.quantity && !pl.orders.empty()){
+                        Order maker   = pl.orders.front();
+                        uint64_t fill = std::min(maker.quantity, Basket.quantity);
+                        trades.emplace_back(maker.id, Basket.id, maker.price, fill);
+                        Basket.quantity -= fill;
+                        maker.quantity -= fill;
 
-                    if(maker.quantity == 0){
-                        pl.orders.pop_front();
-                    } else {
-                        pl.orders.front().quantity = maker.quantity;
+                        if(maker.quantity == 0){
+                            pl.orders.pop_front();
+                        } else {
+                            pl.orders.front().quantity = maker.quantity;
+                        }
+                    }
+                    if(pl.orders.empty()){
+                        bids.erase(it);
                     }
                 }
-                if(pl.orders.empty()){
-                    bids.erase(it);
+                if(Basket.quantity > 0){
+                    asks[Basket.price].price = Basket.price;
+                    asks[Basket.price].orders.push_back(Basket);
                 }
             }
-            if(Basket.quantity > 0){
-                asks[Basket.price].price = Basket.price;
-                asks[Basket.price].orders.push_back(Basket);
-            }
+            return trades;
         }
-        return trades;
-    }
 };
 
 
@@ -130,21 +131,54 @@ int main(){
     OrderBook ob;
 
     //producer thread
-    //push orders to the queue
     std::thread producer([&](){
         uint64_t id = 1;
 
         //resting bids
         st.push(std::make_shared<Order>(id++, true, 100, 10)); //buy 10 @ 100
+        std::cout << "[Producer] Pushed Buy 10 @ 100\n";
         st.push(std::make_shared<Order>(id++, true, 101, 15));
+        std::cout << "[Producer] Pushed Buy 15 @ 101\n";
 
         //resting asks
         st.push(std::make_shared<Order>(id++, false, 105, 10)); //sell 10 @ 105
+        std::cout << "[Producer] Pushed Sell 10 @ 105\n";
         st.push(std::make_shared<Order>(id++, false, 104, 20));
+        std::cout << "[Producer] Pushed Sell 20 @ 104\n";
 
         //aggressive taker buy => matches asks
         st.push(std::make_shared<Order>(id++, true, 106, 25)); //buy 25 @ 106
+        std::cout << "[Producer] Pushed Aggressive Buy 25 @ 106\n";
+
         //aggressive taker sell => matches bids
         st.push(std::make_shared<Order>(id++, false, 99, 20));
+        std::cout << "[Producer] Pushed Aggressive Sell 20 @ 99\n";
     });
+
+    //consumer thread
+    std::thread consumer([&](){
+        std::shared_ptr<Order> o;
+        while (true) {
+            if (st.pop(o)) {
+                std::cout << "[Consumer] Received Order ID=" << o->id
+                          << " " << (o->isBuy ? "BUY " : "SELL ")
+                          << o->quantity << " @ " << o->price << "\n";
+
+                auto trades = ob.addOrder(*o);
+                for (auto &tr : trades) {
+                    auto [maker, taker, price, qty] = tr;
+                    std::cout << ">>> TRADE: MakerID=" << maker
+                              << ", TakerID=" << taker
+                              << ", Qty=" << qty
+                              << ", Price=" << price << "\n";
+                }
+            } else {
+                // sleep a bit to avoid busy spinning
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            }
+        }
+    });
+
+    producer.join();
+    consumer.join();
 }

@@ -1,18 +1,51 @@
------->C++ Topic for HFT
-1.Object oriented programming
-2.Multithreading and multiprocessing
-3.N/W(node) programming (TCP,UDP,LBM)
-4.cretical section, deadlock,mutex,CV
-5.Reader-writer,producer consumer problems and their variations
-6.advance concepts(callback,cast,bitmasking,lamda,move,samrt pointer)
+////////////////////////////////C++ Topic for HFT/////////////////////////////////////////////////
+1.Memory Management:-
+Heap vs Stack, memory leaks, placement new.
+Allocators, memory pools.
+Cache-aware programming.
 
-7.low-level system desgin(factory desgin pattern,singleton desgin pattern)
-8.Boost, Async library, future &promice, launch policies for concurrent programming
+2.Multithreading & Concurrency
+std::thread, std::async, std::future.
+Atomics (std::atomic, memory_order).
+Lock-free queues (SPSC, MPMC) — widely used in order book engines.
 
+3.Low-Latency Techniques
+Busy-waiting vs blocking.
+NUMA architecture awareness.
+Branch prediction, false sharing, cache lines.
+Profiling (perf, valgrind, gperftools).
 
+4.Order & Order Book
+struct Order { id, price, qty, side }.
+Price levels with std::deque or custom ring buffers.
+Matching engine simulation (FIFO, priority queue).
 
+5.Market Data Handling
+Parsing FIX messages.
+Handling UDP multicast (for real-time feeds).
+Implementing circular buffers.
 
-/////HFT strategy:-
+6.Time Series & Math Utilities
+Rolling windows (for moving averages, volatility).
+Custom matrix/vector classes or use Eigen.
+Random number generators for Monte Carlo.
+
+7.Templates & Meta-programming
+Expression templates for math libraries.
+Compile-time computations with constexpr.
+Type traits & SFINAE.
+
+8.Networking
+Sockets (Boost.Asio, raw sockets).
+FIX protocol parsing.
+ZeroMQ for distributed trading systems.
+
+9.Real-Time Systems
+Lock-free data pipelines (e.g., SPSC queues).
+Latency measurement tools.
+Interfacing with hardware timers.
+
+/////////////////////////////////////HFT strategy////////////////////////////////////////////
 Low- Latency network + Powerful Hardware + Mathematical Model + Exchange data centre
 Strategy:-
 1.Market Making:-        Medium Speed       profit(bid-ask spread) - provide liquidity
@@ -27,7 +60,7 @@ Strategy:-
 
 
 
-/////Infrastructure
+/////////////////////////////////Infrastructure/////////////////////////////////////////
 1.Ultra-low latency Infrastructure:- c++ OR RUST /near exchange / dedicated VPS /
 2.Ultra-smooth:- CPU:        AMD threadripper pro 7975wx(32 cores, 64 thread)
                  RAM:        256GB, DDR5 ECC(server ram)
@@ -53,7 +86,8 @@ Strategy:-
                          Cooling: Fully liquid-cooled rack unit
                         cast:- 70-1.2 CR
 
-                        
+
+/////////////////////////////////////////Python////////////////////////////////////////////////////////////
 Top 10 open source Quant Libraries and Packages 
 
 1. QuantLib:
@@ -99,6 +133,14 @@ Top 10 open source Quant Libraries and Packages
 
 
 ################################################# Projects #############################################################
+1.Lock-Free Queue Implementation (SPSC, MPMC).
+2.Limit Order Book Engine (with order matching logic).
+3.Market Data Feed Handler (parse simulated ticks via UDP).
+4.Backtesting Engine (fast event-driven in C++).
+5.Options Pricing Library (Black-Scholes, Monte Carlo, Greeks).
+6.Real-Time Trading Bot (with simulated exchange API).
+
+
 1.Market data parser & L1 recorder (easy)
 Ingest a raw market feed (simulated), parse messages, store to binary log (per-message timestamp).
 Goals: robust parsing, minimal allocations, high-throughput writing.
