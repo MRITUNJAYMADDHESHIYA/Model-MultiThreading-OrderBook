@@ -15,27 +15,27 @@ class OrderBook{
                 Order(int id, OrderType type, Side side, double price, int quantity): id(id), type(type), side(side), price(price), quantity(quantity){}
 
                 //attributes
-                int getId() const{return id;}
+                int getId()         const{return id;}
                 OrderType getType() const {return type;}
-                Side getSide() const {return side;}
-                double getPrice() const{return price;}
-                int getQuantity() const{return quantity;}
+                Side getSide()      const {return side;}
+                double getPrice()   const{return price;}
+                int getQuantity()   const{return quantity;}
 
                 //update order quantity
                 void setQuantity(int new_quantity) {quantity = new_quantity;}
 
             private:
-                int id;
+                int       id;
                 OrderType type;
-                Side side;
-                double price;
-                int quantity;
+                Side      side;
+                double    price;
+                int       quantity;
         };
 
 
 
         //add an order to the order book
-        void addOrder(const Order& order){
+        void  (const Order& order){
             orders.push_back(order);
         }
 
