@@ -1,3 +1,9 @@
+//constructor  ->Used to initialize the object's attributes
+//Destructor   ->Used to free resources allocated to the object
+//Inheritance  ->New class inherit properties and behaviors from existing class
+//Encapsulation->Data hiding and controlled access
+//Abstraction  ->hiding the complex details
+//Polymorphism ->
 #include<iostream>
 using namespace std;
 
