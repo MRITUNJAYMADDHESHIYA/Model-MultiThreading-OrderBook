@@ -37,5 +37,6 @@ class Reactangle: public IShape{
 };
 
 int main(){
-
+    Reactangle rect(2, 3);
+    return 0;
 }
