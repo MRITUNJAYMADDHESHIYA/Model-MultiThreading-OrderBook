@@ -13,6 +13,7 @@ class MarketData{
             std::this_thread::sleep_for(std::chrono::seconds(2));
             return 2500;
         }
+        
 
         std::future<int> fetchPriceAsync(){
             return std::async(std::launch::async, &MarketData::fetchPrice, this);
