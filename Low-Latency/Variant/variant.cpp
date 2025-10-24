@@ -1,4 +1,3 @@
-
 //1.No base class and virtual function
 //2.Compile-time type safety
 //3.std::visit automatically calls the correct handle
