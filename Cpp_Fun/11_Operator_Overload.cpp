@@ -1,3 +1,10 @@
+//What operator can't be overloaded in C++?
+//.      ->member access operator
+//*      ->pointer-to-member operator
+//::     ->scope resolution operator
+//sizeof ->size of operator
+//?:     ->ternary conditional operator
+
 #include<iostream>
 using namespace std;
 
