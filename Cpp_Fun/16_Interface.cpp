@@ -1,3 +1,5 @@
+//Interface :- If you want to call as me then you have me functionality
+
 #include<iostream>
 #include<cmath>
 using namespace std;
