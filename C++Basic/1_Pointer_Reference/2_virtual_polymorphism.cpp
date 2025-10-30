@@ -49,3 +49,4 @@ int main(){
 
 
 //////////////////////
+//not studyd yet so meet tommorow
