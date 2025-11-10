@@ -5,3 +5,6 @@
 
 //class diagram:- Describes the structure of a system by showing its classes, attributes, operations, and relationships among objects.
 
+//Association:- class association ->Inheritance
+//           :- object association ->simple, aggregation, composition
+
