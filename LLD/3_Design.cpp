@@ -62,7 +62,7 @@ class ShoppingCart{
 };
 
 
-//SRP
+///////SRP
 class ShoppingCartSRP{
     private:
         std::vector<Product*> products;
