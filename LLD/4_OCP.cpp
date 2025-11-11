@@ -79,7 +79,8 @@ class Database{
     private:
         ShoppingCartSRP* cart;
     public:
-        virtual void save(ShoppingCartSRP* cart) = 0; //pure virtual function
+        virtual void save(const ShoppingCartSRP* cart) = 0; //pure virtual function
+        virtual ~Database() {} //virtual destructor
 };
 
 class SQLDatabase : public Database{
@@ -105,11 +106,10 @@ class FileDatabase : public Database{
 
 
 int main(){
-    ShoppingCartSRP* cart = new ShoppingCartSRP();
+    Database* cart = new Database();
 
     Product* p1 = new Product("Laptop", 999.99);
     Product* p2 = new Product("Mouse", 49.99);
-
     cart->addProduct(p1);
     cart->addProduct(p2);
 
@@ -119,6 +119,15 @@ int main(){
     DatabaseSaver* dbSaver = new DatabaseSaver(cart);
     dbSaver->saveToSQLDatabase();
 
+    ////////Using OCP
+    Database* sqlDb = new SQLDatabase();
+    sqlDb->save(cart);
+    Database* mongoDb = new MongoDB();
+    mongoDb->save(cart);
+    Database* fileDb = new FileDatabase();
+    fileDb->save(cart);
+
+
 
     //clean up
     delete p1;
@@ -126,6 +135,9 @@ int main(){
     delete cart;
     delete printer;
     delete dbSaver;
+    delete sqlDb;
+    delete mongoDb;
+    delete fileDb;
 
     return 0;
 }
