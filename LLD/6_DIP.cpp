@@ -87,3 +87,7 @@ int main(){
 
     return 0;
 }
+
+
+//OCP is a target then DIP is the solution
+//
