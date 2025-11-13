@@ -1,3 +1,4 @@
-Hello, world!
-[Image: picture.png]
+Hello, wolrd
 This is the end.
+	Hi and bye
+[Image: picture.png]

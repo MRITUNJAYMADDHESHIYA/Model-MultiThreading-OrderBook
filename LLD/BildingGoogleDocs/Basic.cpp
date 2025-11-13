@@ -6,6 +6,11 @@
 //                 :- 4.renderDocument();
 //                 :- 5.saveTofile();
 
+
+/////Problem and solution
+//1.SIP has to follow
+//2.OCP has to follow
+//
 #include<iostream>
 #include<vector>
 #include<string>
@@ -42,7 +47,7 @@ class DocumentEditor{
             }
             return renderedDocument;
         }
-
+        //save file
         void saveToFile(){
             ofstream file("document.txt");
             if(file.is_open()){
