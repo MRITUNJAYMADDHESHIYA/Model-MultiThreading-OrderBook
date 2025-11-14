@@ -14,6 +14,13 @@
 //renderdoc();
 //save();
 
+
+//////////////////////////////Some Methods for /////////////////////////
+//SRP-->DocumentElement + Document + Persistence + DocumentEditor
+//OCP-->we can put anything in any class new thing
+//LSP-->Document follow the DocumentElement
+//ISP-->
+//DIP-->interface in every class
 #include<iostream>
 #include<vector>
 #include<string>
