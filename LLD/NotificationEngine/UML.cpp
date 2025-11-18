@@ -4,10 +4,11 @@
 //          store all notification/logging
 // 
 // 
-// 
-// 
-// 
-// 
+// INotification(getcontant())<---------------------------------------------------Observable()<-------NotificationObserablve()
+//   |            |     |<---------------------------------------------------------------------------------|
+//   | is a       | has a
+//   |            |
+// INotificationDecorator(INotification notify)---->TimeStampDeco + SignatureDeco
 // 
 // 
 // 
