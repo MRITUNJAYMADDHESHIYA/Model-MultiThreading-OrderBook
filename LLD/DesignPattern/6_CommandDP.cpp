@@ -1,8 +1,12 @@
+//Encapsulate a request as an object.
+
 //Turns a request into an object
 //support:- queueing, logging, undo/redo
 
 //Real world:- sender and receiver
 //          :- Queues/stores commands
+//          :- undo feature
+//          :- Keyboard shortcut
 //                                                                            <<abstruct>>
 //Remote(vector<Icommand>, pressButton(t/f), setCommond())------------------>ICommand(execute(), undo())
 //                                                                       |
