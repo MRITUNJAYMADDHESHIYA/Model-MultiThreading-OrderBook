@@ -1,5 +1,6 @@
 //Adapter converts the interface of a class into another interface that client expect.
 // 
+// ---->To make the interaction between completely difference interfaces
 // Real world:- 1. 3rd party vender
 //           :- 2. lageacy code(old code) || modern code
 // 
