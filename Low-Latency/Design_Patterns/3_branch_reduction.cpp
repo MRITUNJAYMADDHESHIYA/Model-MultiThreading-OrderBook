@@ -1,6 +1,19 @@
+//1.Breanch_reduction:- (if, else, switch..) removal techniques
+//predictable latency matters more than average latency.
+
+//use:- Arithmetic operations
+//   :- Bitwise operations
+//   :- Ternary operators
+//   :- Lookup tables
+//   :- Masks
+//   :- SIMD intrinsics
+
+
+
+
 #include <benchmark/benchmark.h>
 
-// A typical error checking setup
+//This is normally error checking setup
 int errorCounterA = 0;
 
 bool checkForErrorA() {
@@ -49,7 +62,7 @@ static void Branching(benchmark::State& state) {
   }
 }
 
-// A new setup using flags
+/////////// This is the methods for branch reduction
 enum ErrorFlags {
   ErrorA = 1 << 0,
   ErrorB = 1 << 1,
