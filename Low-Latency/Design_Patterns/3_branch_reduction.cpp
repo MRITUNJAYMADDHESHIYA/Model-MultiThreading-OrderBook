@@ -8,12 +8,43 @@
 //   :- Masks
 //   :- SIMD intrinsics
 
-
-
-
 #include <benchmark/benchmark.h>
+#include<iostream>
+#include<vector>
 
-//This is normally error checking setup
+using namespace std;
+
+//////////Example//////////////////////////
+int maxi(int a, int b){
+  if(a > b) return a;
+  return b;
+}
+
+int maxi_branch(int a, int b){
+  return a + (a < b) * (b - a);
+}
+
+int maxi_branch2(int a, int b){
+  int mask = -(a < b);
+  return a ^ ((a^b) & mask);
+}
+
+/////////////Example2/////////////////
+int loop(vector<int>& arr){
+  for(int i=0; i<n; ++i){
+    // if(arr[i] > 0){
+    //   sum += arr[i]; 
+    // }
+
+    int x = arr[i];
+    sum += x * (x > 0);
+  }
+}
+
+
+
+
+////////////This is normally error checking setup
 int errorCounterA = 0;
 
 bool checkForErrorA() {
@@ -62,7 +93,7 @@ static void Branching(benchmark::State& state) {
   }
 }
 
-/////////// This is the methods for branch reduction
+/////////////// This is the methods for branch reduction
 enum ErrorFlags {
   ErrorA = 1 << 0,
   ErrorB = 1 << 1,
@@ -101,7 +132,7 @@ static void ReducedBranching(benchmark::State& state) {
   }
 }
 
-// Register the functions as a benchmark
+//////////////////////// BenchMark ///////////////////////////
 BENCHMARK(Branching);
 BENCHMARK(ReducedBranching);
 

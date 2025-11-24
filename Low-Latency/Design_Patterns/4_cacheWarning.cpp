@@ -1,3 +1,19 @@
+//1.CPU cache:-
+//           :- L1 cache(fastest)
+//           :- L2 cache
+//           :- L3 cache(slowest)
+//           :- RAM(much slower)
+//           :- Disk(extremely slow)
+
+//2.Data access pattern may cause misses, slowing down program
+//random access
+//not reusing data soon
+//not fitting inside L1 cache lines
+//false sharing
+//causes extra memory cycles
+
+
+
 #include <benchmark/benchmark.h>
 #include <vector>
 #include <algorithm>
@@ -30,7 +46,7 @@ static void BM_CacheWarm(benchmark::State& state) {
   }
   benchmark::ClobberMemory();
  
-  // Run the benchmark
+  /////////// Run the benchmark
   for (auto _ : state) {
     int sum = 0;
     // Access data in sequential order again
