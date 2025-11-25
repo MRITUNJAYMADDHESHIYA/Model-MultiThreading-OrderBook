@@ -36,5 +36,12 @@ BENCHMARK(BM_SomeFunction)->RangeMultiplier(2)->Range(1 << 10, 1 <<20);
 BENCHMARK_MAIN();
 
 
-//g++ -std=c++20 -O3 benckmarktest.cpp branch_reduction.cpp -lbenchmark -pthread -o branch_bench
+// ///////This is main function for benchmark execution /////////
+// int main(int argc, char** argv) {
+//     benchmark::Initialize(&argc, argv);
+//     benchmark::RunSpecifiedBenchmarks();
+// }
+
+
+//g++ -std=c++20 -O3 benckmarktest.cpp -lbenchmark -pthread -o branch_bench
 //./branch_bench
