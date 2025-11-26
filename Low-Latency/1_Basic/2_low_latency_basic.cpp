@@ -77,7 +77,10 @@ void process(buffer& b){
 //double with atomic:- x86, x64, armv7, arm64--->apple clang v13
 
 
-//////start next day now
+/// try_lock:-
+//use with spin_lock not with mutex
+
+
 
 
 
