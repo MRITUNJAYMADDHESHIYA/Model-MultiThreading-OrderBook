@@ -1,5 +1,9 @@
 ////std::unique_ptr:-(It represents exclusive ownership of a dynamically allocated object. When the unique_ptr goes out of scope, it automatically deletes the object it owns.)
 
+//Implement your own unique_ptr
+//Garbage-collected---->python, java, go, ....
+//not garbage-collected-->C, C++, rust, assembly
+
 
 
 
