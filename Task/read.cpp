@@ -15,3 +15,5 @@
 ///2. Build a better model than the z-score trading system
 ///3. Compare and optimize the absolute P/L, sharpe ratio and Drawdown
 
+//I will write this python code in c++ after find good pair trading strategy in python using some different models
+
