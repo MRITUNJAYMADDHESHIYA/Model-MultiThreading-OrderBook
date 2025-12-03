@@ -33,3 +33,11 @@
 // ## using RegimeDetectorARHMM
 // # [1] ---->193, Sharpe Ratio: 6.702584412675305                      -3656 trades
 // # [2] ---->99   Sharpe Ratio: 6.190348145217359                      -4439 trades
+
+
+
+
+////////////////////Some more thing I have to do it.
+//1. I have to work on data-analysis, for accuracy
+//2. Try some more models to identify regimes
+//3. data is large so try to optimize code for fast execution
