@@ -19,12 +19,12 @@ void increment_locked(int inc) {
   }
 }
 
+
 static void BM_Atomic(benchmark::State& state) {
   for (auto _ : state) {
     increment_atomic(state.range(0));
   }
 }
-// Register the function as a benchmark
 BENCHMARK(BM_Atomic)->Arg(10000);
 
 static void BM_Mutex(benchmark::State& state) {
