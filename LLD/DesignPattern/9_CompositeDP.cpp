@@ -11,7 +11,6 @@
 //File(name, size, ls, openAll, getSize, getName)        Folder(name, vector<FileSystem>, ls, openAll, getSize, getName)
 
 
-
 #include<iostream>
 #include<vector>
 #include<string>
@@ -93,4 +92,5 @@ class Folder : public FileSystemItem{
 
 
 
-
+/////////from next day I have to cotinue this//////
+////////
