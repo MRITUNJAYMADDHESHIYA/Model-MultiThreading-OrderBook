@@ -1,3 +1,7 @@
+//1.Basic thread management
+//2.Launching a thread
+
+
 #include<iostream>
 #include<thread>
 
