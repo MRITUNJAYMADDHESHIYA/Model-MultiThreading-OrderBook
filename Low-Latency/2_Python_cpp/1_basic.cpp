@@ -62,7 +62,11 @@ auto v   = std::views::iota(1, 30) | std::views::filter(odd) | std::views::take(
 fmt::print("{}\n", v);
 
 
-//Why can't use python only
+//Why can't use python only\
+//Numpy is really good for array operation and fast prototyping
+//Always use modules that already in python
+//learn the module in deep ways
+
 //--slow
 //--easier to make mistakes
 //problems:-
@@ -71,7 +75,7 @@ def foo(a):
 if __name__ == "__main__":
     b = 10
     print(foo(5))
-    
+
 
 
 
