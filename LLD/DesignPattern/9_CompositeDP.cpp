@@ -158,5 +158,3 @@ int main(){
 
 
 
-/////////from next day I have to cotinue this//////
-////////

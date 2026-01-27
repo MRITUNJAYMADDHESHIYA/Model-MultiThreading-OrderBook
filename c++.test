@@ -1,3 +1,30 @@
+/////////HFT C++///////////////////////////
+1.Prediction performance + memory discipline + cache awareness
+2.Pre --> Object lifetimes + RAII + move semantics + const-correctness + references and pointer
+3.Read--> Effective Modern C++(scott meyers) + c++ concurrency(anthony williams)
+4.Performance/Memory---> stack vs heap allocation
+                         cache lines + false sharing
+                         alignment and padding
+                         branch prediction
+    What every Programmer should know about memory(ulrich drepper) + optimized c++(kurt guntheroth)
+5.Systems Thinking---->OS(most important) + NUMA effects + CPU pinning + syscall cost
+6.Concurrency/Lock-free basics--->(minimise blocking) atomics + memory ordering + lock-free queues + contention trade Off
+7.Architectures---> (Read for Ideas) LMAX disruptor architecture paper
+                                     Memory Barriers(ulrich drepper)
+                                     Intel latency Optimisation guides
+                                     Linux perf 
+8.Open-source---> boost.lockfree + folly + aeron messaging concepts
+9.Avoid-------> STL without cost awareness
+                benchmarking averages instead of p99+
+
+
+
+
+
+
+
+
+
 ////////////////////////////////C++ Topic for HFT/////////////////////////////////////////////////
 1.Memory Management:-
 Heap vs Stack, memory leaks, placement new.
